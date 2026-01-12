@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita - SMK Cerdas Bangsa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Berita Terbaru</h1>
+        </div>
+    </header>
+    <section class="section">
+        <div class="container">
+            <div id="berita-container">
+                <p>Memuat berita...</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SMK Cerdas Bangsa. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        const berita = [
+            { judul: 'Juara Lomba Robotik', isi: 'Siswa SMK Cerdas Bangsa berhasil meraih juara 1 nasional lomba robotik.' },
+            { judul: 'Guru Berprestasi', isi: 'Salah satu guru kami meraih penghargaan guru terbaik tingkat provinsi.' }
+        ];
+        const beritaContainer = document.getElementById('berita-container');
+        beritaContainer.innerHTML = '';
+        berita.forEach(b => {
+            const artikel = document.createElement('article');
+            artikel.innerHTML = `<h3>${b.judul}</h3><p>${b.isi}</p>`;
+            beritaContainer.appendChild(artikel);
+        });
+    </script>
+</body>
+</html>

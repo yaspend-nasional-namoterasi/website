@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Siswa Baru</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        table th {
+            background: #0d47a1;
+            color: #fff;
+            text-align: left;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        table input,
+        table textarea,
+        table select {
+            width: 100%;
+            padding: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Pendaftaran Siswa Baru</h1>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container">
+
+<form onsubmit="kirimWA(event)">
+
+<!-- 1. DATA CALON MURID -->
+<table>
+<tr><th colspan="2">1. Data Identitas Calon Murid</th></tr>
+<tr><td>Nama Lengkap</td><td><input id="nama" required></td></tr>
+<tr><td>Jenis Kelamin</td><td><input id="jk" required></td></tr>
+<tr><td>Tempat & Tanggal Lahir</td><td><input id="ttl" required></td></tr>
+<tr><td>NIK</td><td><input id="nik" required></td></tr>
+<tr><td>Nomor KK</td><td><input id="kk" required></td></tr>
+<tr><td>Agama</td><td><input id="agama"></td></tr>
+<tr><td>Kewarganegaraan</td><td><input id="kewarganegaraan"></td></tr>
+<tr><td>Anak ke-</td><td><input id="anak_ke"></td></tr>
+<tr><td>Jumlah Saudara Kandung</td><td><input id="saudara"></td></tr>
+<tr><td>Status Anak</td><td><input id="status_anak"></td></tr>
+</table>
+
+<!-- 2. ALAMAT -->
+<table>
+<tr><th colspan="2">2. Data Alamat & Kontak</th></tr>
+<tr><td>Alamat Lengkap</td><td><textarea id="alamat"></textarea></td></tr>
+<tr><td>Kode Pos</td><td><input id="kodepos"></td></tr>
+<tr><td>Jarak Rumah ke Sekolah</td><td><input id="jarak"></td></tr>
+<tr><td>No HP / WhatsApp</td><td><input id="hp" required></td></tr>
+<tr><td>Email</td><td><input id="email"></td></tr>
+</table>
+
+<!-- 3. ORANG TUA -->
+<table>
+<tr><th colspan="2">3. Data Ayah</th></tr>
+<tr><td>Nama Ayah</td><td><input id="ayah_nama"></td></tr>
+<tr><td>NIK Ayah</td><td><input id="ayah_nik"></td></tr>
+<tr><td>Pekerjaan</td><td><input id="ayah_pekerjaan"></td></tr>
+<tr><td>No HP</td><td><input id="ayah_hp"></td></tr>
+</table>
+
+<table>
+<tr><th colspan="2">Data Ibu</th></tr>
+<tr><td>Nama Ibu</td><td><input id="ibu_nama"></td></tr>
+<tr><td>NIK Ibu</td><td><input id="ibu_nik"></td></tr>
+<tr><td>Pekerjaan</td><td><input id="ibu_pekerjaan"></td></tr>
+<tr><td>No HP</td><td><input id="ibu_hp"></td></tr>
+</table>
+
+<!-- 4. PENDIDIKAN -->
+<table>
+<tr><th colspan="2">4. Data Pendidikan Sebelumnya</th></tr>
+<tr><td>Nama Sekolah Asal</td><td><input id="asal_sekolah"></td></tr>
+<tr><td>NPSN</td><td><input id="npsn"></td></tr>
+<tr><td>Alamat Sekolah</td><td><textarea id="alamat_sekolah"></textarea></td></tr>
+<tr><td>Tahun Lulus</td><td><input id="tahun_lulus"></td></tr>
+</table>
+
+<!-- 5. JENJANG -->
+<table>
+<tr><th colspan="2">5. Jenjang Pendidikan</th></tr>
+<tr>
+    <td>Jenjang</td>
+    <td>
+        <select id="jenjang">
+            <option value="">-- Pilih --</option>
+            <option>SMP</option>
+            <option>SMA</option>
+            <option>SMK</option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <td>Jurusan (Khusus SMK)</td>
+    <td>
+        <select id="jurusan">
+            <option value="">-</option>
+            <option>TBSM - Teknik Bisnis Sepeda Motor</option>
+            <option>TKJ - Teknik Komputer Jaringan</option>
+        </select>
+    </td>
+</tr>
+</table>
+
+<button type="submit">Kirim Pendaftaran via WhatsApp</button>
+
+</form>
+
+<div class="button-container">
+    <a href="index.html" class="back-button">⮜ Kembali ke Beranda</a>
+</div>
+
+</div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Yaspend Nasional Namoterasi</p>
+    </div>
+</footer>
+
+<script>
+function kirimWA(e){
+    e.preventDefault();
+    const nomor="62895613101691";
+    const teks = `
+PENDAFTARAN SISWA BARU
+Nama: ${nama.value}
+JK: ${jk.value}
+TTL: ${ttl.value}
+Alamat: ${alamat.value}
+HP: ${hp.value}
+Sekolah Asal: ${asal_sekolah.value}
+Jenjang: ${jenjang.value}
+Jurusan: ${jurusan.value}
+`;
+    window.open("https://wa.me/"+nomor+"?text="+encodeURIComponent(teks));
+}
+</script>
+
+</body>
+</html>
